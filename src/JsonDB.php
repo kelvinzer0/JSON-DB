@@ -94,5 +94,14 @@ class JsonDBObject extends JsonDB {
             return null;
         }
     }
+    public function search($key, $value) {
+        $tableData = $this->get($this->tableName);
+        foreach ($tableData as $index => $record) {
+            if (isset($record[$key]) && $record[$key] === $value) {
+                return $index; // Return the index of the matched record
+            }
+        }
+        return null; // No matching record found
+    }
 }
 ?>
